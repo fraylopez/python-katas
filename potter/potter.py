@@ -10,11 +10,8 @@ discounts = {
 def calculate_price(books):
     num_books = len(books)
 
-    if num_books == 0:
-        return 0
-
-    if num_books == 1:
-        return 8
+    if num_books <= 1:
+        return 8 * len(books)
 
     num_different_books = len(set(books))
     discount = discounts[num_different_books]
@@ -28,8 +25,6 @@ def calculate_price(books):
             return calculate_price(list(set(books))) * num_sets
         else:
             return 8 * num_different_books * (1 - discount) + (8 * (num_books - num_different_books))
-
-    return 8 * len(books)
 
 
 def many_sets(books):
